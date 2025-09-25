@@ -56,3 +56,16 @@ Breadcrumbs::for('admin.password.index', function (BreadcrumbTrail $trail): void
     $trail->parent('admin.index');
     $trail->push('Change Password', route('admin.password.index'));
 });
+// Tasks
+Breadcrumbs::for('tasks.listing', function (BreadcrumbTrail $trail): void {
+    $trail->parent('admin.index');
+    $trail->push('Tasks', route('tasks.listing'));
+});
+Breadcrumbs::for('tasks.create', function (BreadcrumbTrail $trail): void {
+    $trail->parent('admin.index');
+    $trail->push('Create Tasks', route('tasks.create'));
+});
+Breadcrumbs::for('tasks.edit', function (BreadcrumbTrail $trail, $task): void {
+    $trail->parent('tasks.listing');
+    $trail->push('Edit Task', route('tasks.edit', $task));
+});

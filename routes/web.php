@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TaskController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,14 @@ Route::get('/posts', function () {
         echo $post->author->name . "<br>";
     }
 });
+
+Route::get('/tasks/listing', [TaskController::class, 'listing'])->name('tasks.listing');
+Route::get('/tasks/listing/create', [TaskController::class, 'create'])->name('tasks.create');
+Route::post('/tasks/store', [TaskController::class, 'store'])->name('tasks.store');
+Route::get('/tasks/edit/{task}', [TaskController::class, 'edit'])->name('tasks.edit');
+Route::post('/tasks/destroy', [TaskController::class, 'destroy'])->name('tasks.destroy');
+Route::get('/tasks/edit/{task}', [TaskController::class, 'edit'])->name('tasks.edit');
+
 
 Auth::routes();
 

@@ -44,6 +44,13 @@
                         </a>
                     </li>
                 @endcan
+                <li class="nav-item">
+                    <a class="nav-link {{ (request()->is('/tasks/listing*')) ? 'active' : '' }}"
+                        href="{{ route('tasks.listing') }}">
+                        <span data-feather="disc" class="align-text-bottom"></span>
+                        Tasks
+                    </a>
+                </li>
                 @can('post_access')
                     <li class="nav-item">
                         <a class="nav-link {{ (request()->is('admin/posts*')) ? 'active' : '' }}"
