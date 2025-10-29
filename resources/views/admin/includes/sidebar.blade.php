@@ -44,6 +44,15 @@
                         </a>
                     </li>
                 @endcan
+                @can('task_access')
+                    <li class="nav-item">
+                        <a class="nav-link {{ (request()->is('/admin/tasks*')) ? 'active' : '' }}"
+                           href="{{ route('admin.tasks.index') }}">
+                            <span data-feather="book" class="align-text-bottom"></span>
+                            Tasks
+                        </a>
+                    </li>
+                @endcan
                 @can('post_access')
                     <li class="nav-item">
                         <a class="nav-link {{ (request()->is('admin/posts*')) ? 'active' : '' }}"
