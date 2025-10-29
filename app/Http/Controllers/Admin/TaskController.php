@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
+
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -23,14 +25,14 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks =Task::latest();
-        return view('tasks.index');
+        $tasks =Task::latest()->paginate(10);
+        return view('admin.tasks.index', compact ('tasks'));
     }
 
     //create
     public function create()
     {
-        return view('tasks.create');
+        return view('admin.tasks.create');
     }
 
     public function store(Request $request)
@@ -42,18 +44,18 @@ class TaskController extends Controller
         ]);
 
         Task::create($validated);
-        return redirect()->route('tasks.index');
+        return redirect()->route('admin.tasks.index');
     }
 
     //read
     public function show (Task $task)
     {
-        return view ('tasks.show', compact ('task'));
+        return view ('admin.tasks.show', compact ('task'));
     }
     
     public function edit ()
     {
-        return view ('tasks.edit', compact ('task'));
+        return view ('admin.tasks.edit', compact ('task'));
     }
 
     public function update(Request $request, Task $task)
@@ -65,12 +67,12 @@ class TaskController extends Controller
         ]);
 
         $task->update($validated);
-        return redirect()->route('tasks.index');
+        return redirect()->route('admin.tasks.index');
     }
 
-    public function remove (Task $task)
+    public function destroy (Task $task)
     {
         $task->delete();
-        return redirect()->route('tasks.index');
+        return redirect()->route('admin.tasks.index');
     }
 }
