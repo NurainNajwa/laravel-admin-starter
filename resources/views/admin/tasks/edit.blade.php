@@ -16,11 +16,11 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Description</label>
-            <textarea name="description" class="form-control" value="{{  $task->description }}"></textarea>
+            <textarea name="description" class="form-control" value="{{  $task->description }}" ></textarea>
         </div>
         <div class="mb-3">
             <label class="form-label">Due date</label>
-            <input name="due_date" type="date" class="form-control" value="{{  $task->due_date }}"required>
+            <input name="due_date" type="date" class="form-control" value="{{  $task->due_date }}" required>
         </div>
         <button class="btn btn-primary]">Update</button>
         <a href="{{ route('admin.tasks.index') }}" class="btn btn-secondary">Cancel</a>

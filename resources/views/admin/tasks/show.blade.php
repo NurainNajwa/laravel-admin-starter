@@ -12,7 +12,7 @@
     <strong>Title: </strong> {{  $task-> title }} </div>
     <strong>Description: </strong> {{  $task-> description }} </div>
     <strong>Due date: </strong> {{  $task-> due_date }} </div>
-    <a href="{{ route('admin.tasks.edit') }}" class="btn btn-primary">Edit</a>
+    <a href="{{ route('admin.tasks.edit', $task) }}" class="btn btn-primary">Edit</a>
     <a href="{{ route('admin.tasks.index') }}" class="btn btn-secondary">Back</a>
 
 </div>
